@@ -50,7 +50,6 @@ function generateBgList() {
 // Next background on button click
 
 function bgNumber(hour, modifier) {
-  console.log('changing bg number', `hour: ${hour} modifier: ${modifier}`, hour + modifier % 24);
   return (hour + modifier) % 24;
 }
 
@@ -93,36 +92,69 @@ function showDate() {
   date.innerHTML = `${weekday}, ${month} ${day}`;
 }
 
-// Set background and greeting
-function setBgGreet() {
+// Set greeting
+function setGreet() {
   let today = new Date(),
     hour = today.getHours();
 
   if (hour < 6) {
     //Night
-    document.body.style.backgroundImage = `url(./assets/images/night/${bgList[
-      bgNumber(hour, modifier)
-    ]}.jpg)`;
+    // document.body.style.backgroundImage = `url(./assets/images/night/${bgList[
+    //   bgNumber(hour, modifier)
+    // ]}.jpg)`;
     greeting.textContent = 'Good Night,';
-    document.body.style.color = 'white';
+    // document.body.style.color = 'white';
   } else if (hour < 12) {
     //Morning
-    document.body.style.backgroundImage = `url(./assets/images/morning/${bgList[
-      bgNumber(hour, modifier)
-    ]}.jpg)`;
+    // document.body.style.backgroundImage = `url(./assets/images/morning/${bgList[
+    //   bgNumber(hour, modifier)
+    // ]}.jpg)`;
     greeting.textContent = 'Good Morning,';
   } else if (hour < 18) {
     //Afternoon
-    document.body.style.backgroundImage = `url(./assets/images/day/${bgList[
-      bgNumber(hour, modifier)
-    ]}.jpg)`;
+    // document.body.style.backgroundImage = `url(./assets/images/day/${bgList[
+    //   bgNumber(hour, modifier)
+    // ]}.jpg)`;
     greeting.textContent = 'Good Afternoon,';
   } else if (hour < 24) {
     // Evening
-    document.body.style.backgroundImage = `url(./assets/images/evening/${bgList[
-      bgNumber(hour, modifier)
-    ]}.jpg)`;
+    // document.body.style.backgroundImage = `url(./assets/images/evening/${bgList[
+    //   bgNumber(hour, modifier)
+    // ]}.jpg)`;
     greeting.textContent = 'Good Evening,';
+    // document.body.style.color = 'white';
+  }
+}
+
+// Set background
+function setBg() {
+  let today = new Date(),
+    hour = today.getHours();
+
+  let bg = bgNumber(hour, modifier);
+
+  console.log('Background number from array 0-6 morning 6-12 day 12-18 evening 18-23 night:');
+  console.log(bg);
+  console.log('image name');
+  console.log(`${bgList[bg]}.jpg`);
+  console.log('List of random backgrounds:');
+  console.log(bgList);
+
+  if (bg < 6) {
+    //Night
+    document.body.style.backgroundImage = `url(./assets/images/night/${bgList[bg]}.jpg)`;
+
+    document.body.style.color = 'white';
+  } else if (bg < 12) {
+    //Morning
+    document.body.style.backgroundImage = `url(./assets/images/morning/${bgList[bg]}.jpg)`;
+  } else if (bg < 18) {
+    //Afternoon
+    document.body.style.backgroundImage = `url(./assets/images/day/${bgList[bg]}.jpg)`;
+  } else if (bg < 24) {
+    //Evening
+    document.body.style.backgroundImage = `url(./assets/images/evening/${bgList[bg]}.jpg)`;
+
     document.body.style.color = 'white';
   }
 }
@@ -131,7 +163,7 @@ function setBgGreet() {
 
 function changeBg() {
   modifier++;
-  setBgGreet();
+  setBg();
 }
 
 // Get name
@@ -222,6 +254,7 @@ backgroundButton.addEventListener('click', changeBg);
 generateBgList();
 showTime();
 showDate();
-setBgGreet();
+setGreet();
 getName();
 getFocus();
+setBg();
