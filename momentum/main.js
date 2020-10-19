@@ -79,27 +79,27 @@ function setBgGreet() {
   if (hour < 6) {
     //Night
     document.body.style.backgroundImage = "url('https://i.ibb.co/924T2Wv/night.jpg')";
-    greeting.textContent = 'Good Night';
+    greeting.textContent = 'Good Night,';
     document.body.style.color = 'white';
   } else if (hour < 12) {
     //Morning
     document.body.style.backgroundImage = "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
-    greeting.textContent = 'Good Morning';
+    greeting.textContent = 'Good Morning,';
   } else if (hour < 18) {
     //Afternoon
     document.body.style.backgroundImage = "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
-    greeting.textContent = 'Good Afternoon';
+    greeting.textContent = 'Good Afternoon,';
   } else if (hour < 24) {
     // Evening
     document.body.style.backgroundImage = "url('https://i.ibb.co/924T2Wv/night.jpg')";
-    greeting.textContent = 'Good Evening';
+    greeting.textContent = 'Good Evening,';
     document.body.style.color = 'white';
   }
 }
 
 // Get name
 function getName() {
-  if (localStorage.getItem('name') === null) {
+  if (!localStorage.getItem('name')) {
     name.textContent = '[Enter Name]';
   } else {
     name.textContent = localStorage.getItem('name');
@@ -108,6 +108,7 @@ function getName() {
 
 // Set Name
 function setName(e) {
+  if (!name.textContent) return;
   if (e.type === 'keypress') {
     //Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
@@ -121,7 +122,8 @@ function setName(e) {
 
 // Get focus
 function getFocus() {
-  if (localStorage.getItem('focus') === null) {
+  if (!localStorage.getItem('focus')) {
+    
     focus.textContent = '[Enter Focus]';
   } else {
     focus.textContent = localStorage.getItem('focus');
@@ -131,6 +133,7 @@ function getFocus() {
 // Set focus
 
 function setFocus(e) {
+  if (!name.textContent) return;
   if (e.type === 'keypress') {
     //Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
@@ -142,8 +145,40 @@ function setFocus(e) {
   }
 }
 
+// Clear field
+
+function clearField(field) {
+  let temp = field.textContent;
+
+  field.textContent = '';
+
+  field.addEventListener('keypress', (e) => {
+    if (e.which == 13 || e.keyCode == 13) {
+      console.log(temp, field.textContent);
+      if (field.textContent == '') {
+        field.textContent = temp;
+      } else {
+        temp = field.textContent;
+      }
+      field.blur();
+    }
+  });
+
+  field.addEventListener('blur', () => {
+    console.log(temp, field.textContent);
+    if (field.textContent == '') {
+      field.textContent = temp;
+    } else {
+      temp = field.textContent;
+    }
+  });
+}
+
+name.addEventListener('focus', () => clearField(name));
 name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
+
+focus.addEventListener('focus', () => clearField(focus));
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 
