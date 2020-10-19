@@ -18,6 +18,22 @@ body {
   transition: background-image 1s ease-in-out;
 }
 
+h1 {
+  display: block;
+  width: 100%;
+}
+
+.wrapper {
+  min-width: 320px;
+  width: 28rem;
+  background-color: rgba(0, 0, 0, .6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 #time {
   font-size: 8rem;
 }
@@ -25,6 +41,10 @@ body {
 #date {
   margin-bottom: 1rem;
   font-size: 1.5rem;
+}
+
+#greeting {
+  width: 50%;
 }
 
 #name,
@@ -36,11 +56,12 @@ body {
 #background-btn {
   padding: .4rem 1rem;
   margin-top: 1rem;
+  margin-bottom: 1.5rem;
   font-size: 1.2rem;
   font-family: inherit;
   font-weight: 500;
 
-  background-color: rgba(0, 0, 0, .2);
+  background-color: transparent;
   color: inherit;
   border: none;
 
@@ -81,5 +102,4 @@ h1 {
 }
 h2 {
   margin-bottom: 0.5rem;
-  opacity: 0.6;
 }
