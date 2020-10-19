@@ -6,6 +6,7 @@
 
 body {
   background-size: cover;
+  background-position: center center;
   font-family: 'Quicksand', sans-serif;
   display: flex;
   flex-direction: column;
@@ -14,6 +15,7 @@ body {
   text-align: center;
   height: 100vh;
   color: black;
+  transition: background-image 1s ease-in-out;
 }
 
 #time {

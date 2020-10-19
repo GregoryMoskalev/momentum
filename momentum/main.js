@@ -161,7 +161,11 @@ function setBg() {
 
 // Change background
 
-function changeBg() {
+function changeBg(e) {
+  backgroundButton.disabled = true;
+  setTimeout(() => {
+    backgroundButton.disabled = false;
+  }, 1000);
   modifier++;
   setBg();
 }
