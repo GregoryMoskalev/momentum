@@ -123,7 +123,6 @@ function setName(e) {
 // Get focus
 function getFocus() {
   if (!localStorage.getItem('focus')) {
-    
     focus.textContent = '[Enter Focus]';
   } else {
     focus.textContent = localStorage.getItem('focus');
@@ -154,7 +153,6 @@ function clearField(field) {
 
   field.addEventListener('keypress', (e) => {
     if (e.which == 13 || e.keyCode == 13) {
-      console.log(temp, field.textContent);
       if (field.textContent == '') {
         field.textContent = temp;
       } else {
@@ -165,7 +163,6 @@ function clearField(field) {
   });
 
   field.addEventListener('blur', () => {
-    console.log(temp, field.textContent);
     if (field.textContent == '') {
       field.textContent = temp;
     } else {
