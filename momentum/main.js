@@ -4,21 +4,28 @@ const time = document.getElementById('time'),
   name = document.getElementById('name'),
   focus = document.getElementById('focus');
 
+// Options
+const showAmPm = false;
+
 // Show Time
 function showTime() {
   let today = new Date(),
     hour = today.getHours(),
     min = today.getMinutes(),
-    sec = today.getSeconds();
+    sec = today.getSeconds(),
+    amPm;
 
-  // Set AM or PM
-  const amPm = hour >= 12 ? 'PM' : 'AM';
+  if (showAmPm) {
+    // Set AM or PM
+    amPm = hour >= 12 ? 'PM' : 'AM';
 
-  // 12hr Format
-  hour = hour % 12 || 12;
-
+    // 12hr Format
+    hour = hour % 12 || 12;
+  }
   //Output Time
-  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} ${amPm}`;
+  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}${showAmPm
+    ? ' ' + amPm
+    : ''}`;
 
   setTimeout(showTime, 1000);
 }
