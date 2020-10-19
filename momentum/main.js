@@ -29,8 +29,20 @@ const weekdayNames = [
     'December'
   ];
 
+let bgList = [];
 // Options
 const showAmPm = false;
+
+// Generate background list
+function generateBgList() {
+  for (let i = 0; i < 4; i++) {
+    const set = new Set();
+    while (set.size < 6) {
+      set.add(addZero(Math.floor(Math.random() * 19 + 1)));
+    }
+    bgList = bgList.concat([ ...set ]);
+  }
+}
 
 // Show Time
 function showTime() {
@@ -78,24 +90,28 @@ function setBgGreet() {
 
   if (hour < 6) {
     //Night
-    document.body.style.backgroundImage = "url('https://i.ibb.co/924T2Wv/night.jpg')";
+    document.body.style.backgroundImage = `url(./assets/images/night/${bgList[hour]}.jpg)`;
     greeting.textContent = 'Good Night,';
     document.body.style.color = 'white';
   } else if (hour < 12) {
     //Morning
-    document.body.style.backgroundImage = "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
+    document.body.style.backgroundImage = `url(./assets/images/morning/${bgList[hour]}.jpg)`;
     greeting.textContent = 'Good Morning,';
   } else if (hour < 18) {
     //Afternoon
-    document.body.style.backgroundImage = "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
+    document.body.style.backgroundImage = `url(./assets/images/day/${bgList[hour]}.jpg)`;
     greeting.textContent = 'Good Afternoon,';
   } else if (hour < 24) {
     // Evening
-    document.body.style.backgroundImage = "url('https://i.ibb.co/924T2Wv/night.jpg')";
+    document.body.style.backgroundImage = `url(./assets/images/evening/${bgList[hour]}.jpg)`;
     greeting.textContent = 'Good Evening,';
     document.body.style.color = 'white';
   }
 }
+
+// Change background
+
+function changeBg() {}
 
 // Get name
 function getName() {
@@ -180,6 +196,7 @@ focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 
 //Run
+generateBgList();
 showTime();
 showDate();
 setBgGreet();
