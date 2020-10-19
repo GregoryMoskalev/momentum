@@ -3,7 +3,8 @@ const date = document.getElementById('date'),
   time = document.getElementById('time'),
   greeting = document.getElementById('greeting'),
   name = document.getElementById('name'),
-  focus = document.getElementById('focus');
+  focus = document.getElementById('focus'),
+  backgroundButton = document.getElementById('background-btn');
 
 const weekdayNames = [
     'Sunday',
@@ -30,6 +31,8 @@ const weekdayNames = [
   ];
 
 let bgList = [];
+
+let modifier = 0;
 // Options
 const showAmPm = false;
 
@@ -42,6 +45,13 @@ function generateBgList() {
     }
     bgList = bgList.concat([ ...set ]);
   }
+}
+
+// Next background on button click
+
+function bgNumber(hour, modifier) {
+  console.log('changing bg number', `hour: ${hour} modifier: ${modifier}`, hour + modifier % 24);
+  return (hour + modifier) % 24;
 }
 
 // Show Time
@@ -90,20 +100,28 @@ function setBgGreet() {
 
   if (hour < 6) {
     //Night
-    document.body.style.backgroundImage = `url(./assets/images/night/${bgList[hour]}.jpg)`;
+    document.body.style.backgroundImage = `url(./assets/images/night/${bgList[
+      bgNumber(hour, modifier)
+    ]}.jpg)`;
     greeting.textContent = 'Good Night,';
     document.body.style.color = 'white';
   } else if (hour < 12) {
     //Morning
-    document.body.style.backgroundImage = `url(./assets/images/morning/${bgList[hour]}.jpg)`;
+    document.body.style.backgroundImage = `url(./assets/images/morning/${bgList[
+      bgNumber(hour, modifier)
+    ]}.jpg)`;
     greeting.textContent = 'Good Morning,';
   } else if (hour < 18) {
     //Afternoon
-    document.body.style.backgroundImage = `url(./assets/images/day/${bgList[hour]}.jpg)`;
+    document.body.style.backgroundImage = `url(./assets/images/day/${bgList[
+      bgNumber(hour, modifier)
+    ]}.jpg)`;
     greeting.textContent = 'Good Afternoon,';
   } else if (hour < 24) {
     // Evening
-    document.body.style.backgroundImage = `url(./assets/images/evening/${bgList[hour]}.jpg)`;
+    document.body.style.backgroundImage = `url(./assets/images/evening/${bgList[
+      bgNumber(hour, modifier)
+    ]}.jpg)`;
     greeting.textContent = 'Good Evening,';
     document.body.style.color = 'white';
   }
@@ -111,7 +129,10 @@ function setBgGreet() {
 
 // Change background
 
-function changeBg() {}
+function changeBg() {
+  modifier++;
+  setBgGreet();
+}
 
 // Get name
 function getName() {
@@ -194,6 +215,8 @@ name.addEventListener('blur', setName);
 focus.addEventListener('focus', () => clearField(focus));
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
+
+backgroundButton.addEventListener('click', changeBg);
 
 //Run
 generateBgList();
