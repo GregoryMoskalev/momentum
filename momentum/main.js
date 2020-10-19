@@ -265,6 +265,7 @@ name.addEventListener('blur', setName);
 focus.addEventListener('focus', () => clearField(focus));
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
+joke.addEventListener('click', () => dadJoke());
 
 backgroundButton.addEventListener('click', changeBg);
 
