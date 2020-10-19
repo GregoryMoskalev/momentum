@@ -4,7 +4,8 @@ const date = document.getElementById('date'),
   greeting = document.getElementById('greeting'),
   name = document.getElementById('name'),
   focus = document.getElementById('focus'),
-  backgroundButton = document.getElementById('background-btn');
+  backgroundButton = document.getElementById('background-btn'),
+  joke = document.getElementById('joke');
 
 const weekdayNames = [
     'Sunday',
@@ -35,6 +36,19 @@ let bgList = [];
 let modifier = 0;
 // Options
 const showAmPm = false;
+
+// Get dad joke
+
+async function dadJoke() {
+  try {
+    const response = await axios.get('https://icanhazdadjoke.com/', {
+      headers: { Accept: 'text/plain' }
+    });
+    joke.innerText = response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 // Generate background list
 function generateBgList() {
@@ -262,3 +276,4 @@ setGreet();
 getName();
 getFocus();
 setBg();
+dadJoke();

@@ -35,6 +35,15 @@ h1 {
   text-align: center;
 }
 
+.joke-wrapper {
+  margin-top: 5rem;
+}
+
+#joke {
+  line-height: 150%;
+  padding: 1rem 1rem;
+}
+
 #time {
   font-size: 8rem;
 }
