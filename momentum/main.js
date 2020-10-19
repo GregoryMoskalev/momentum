@@ -1,8 +1,33 @@
 // DOM Elements
-const time = document.getElementById('time'),
+const date = document.getElementById('date'),
+  time = document.getElementById('time'),
   greeting = document.getElementById('greeting'),
   name = document.getElementById('name'),
   focus = document.getElementById('focus');
+
+const weekdayNames = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ],
+  monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
 
 // Options
 const showAmPm = false;
@@ -33,6 +58,17 @@ function showTime() {
 // Add zeros
 function addZero(n) {
   return (parseInt(n, 10) < 10 ? '0' : '') + n;
+}
+
+// Show date
+function showDate() {
+  let today = new Date(),
+    month = monthNames[today.getMonth()],
+    day = today.getDate(),
+    weekday = weekdayNames[today.getDay()];
+
+  //Output date
+  date.innerHTML = `${weekday}, ${month} ${day}`;
 }
 
 // Set background and greeting
@@ -113,6 +149,7 @@ focus.addEventListener('blur', setFocus);
 
 //Run
 showTime();
+showDate();
 setBgGreet();
 getName();
 getFocus();
