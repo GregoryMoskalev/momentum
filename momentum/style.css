@@ -33,16 +33,52 @@ body {
   min-width: 100px;
 }
 
+#background-btn {
+  padding: .4rem 1rem;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-family: inherit;
+  font-weight: 500;
+
+  background-color: rgba(0, 0, 0, .2);
+  color: inherit;
+  border: none;
+
+  cursor: pointer;
+  transition: background-color .3s, background-image 1s;
+}
+
+#background-btn:hover {
+  background-color: rgba(0, 0, 0, .7);
+}
+
+#background-btn:disabled {
+  background-image: linear-gradient(
+    to right,
+    #ffe577,
+    #ffe577 25%,
+    #fec051 25%,
+    #fec051 50%,
+    #fd6051 50%,
+    #fd6051 75%,
+    #392033 75%,
+    #392033 100%
+  );
+  animation: slidebg 1s linear infinite;
+}
+@keyframes slidebg {
+  to {
+    background-position: 15vw;
+  }
+}
 @media (max-width: 700px) {
   #time {
     font-size: 6rem;
   }
 }
-
 h1 {
   margin-bottom: 3rem;
 }
-
 h2 {
   margin-bottom: 0.5rem;
   opacity: 0.6;
