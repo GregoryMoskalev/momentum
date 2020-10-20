@@ -14,7 +14,7 @@ body {
   justify-content: center;
   text-align: center;
   height: 100vh;
-  color: black;
+  color: white;
   transition: background-image 1s ease-in-out;
 }
 
@@ -25,8 +25,8 @@ h1 {
 
 .wrapper {
   min-width: 320px;
-  width: 28rem;
-  background-color: rgba(0, 0, 0, .6);
+  width: 30rem;
+  background-color: rgba(0, 0, 0, .5);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -46,6 +46,10 @@ h1 {
   cursor: pointer;
 }
 
+#joke:hover {
+  background-color: rgba(0, 0, 0, .7);
+}
+
 #time {
   font-size: 8rem;
 }
@@ -63,6 +67,8 @@ h1 {
 #focus {
   display: inline-block;
   min-width: 100px;
+
+  cursor: pointer;
 }
 
 #background-btn {
@@ -115,3 +121,21 @@ h1 {
 h2 {
   margin-bottom: 0.5rem;
 }
+.weather-wrapper {
+  margin-top: 5rem;
+  width: 6rem;
+}
+#city {
+  padding-bottom: 1rem;
+}
+#city,
+.temperature,
+.weather-description {
+  font-family: inherit;
+  font-size: 1.2rem;
+  width: 100%;
+}
+.weather-icon {
+  font-size: 4rem;
+}
+

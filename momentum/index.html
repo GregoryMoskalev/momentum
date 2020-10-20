@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/owfont-regular.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>Welcome</title>
 </head>
 <body>
@@ -31,6 +32,16 @@
 
     </h3>
   </div>
+
+  <div class="wrapper weather-wrapper">
+    <i class="weather-icon owf"></i>
+    <div class="weather-description"></div>
+    <div class="temperature"></div>
+    <div class="humidity"></div>
+    <div class="wind-speed"></div>
+    <span id="city" contenteditable="true"></span>
+  </div>
+  <span id='error'></span>  
   <script src="main.js"></script>
 </body>
 </html>

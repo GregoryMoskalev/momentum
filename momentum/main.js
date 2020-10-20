@@ -5,7 +5,14 @@ const date = document.getElementById('date'),
   name = document.getElementById('name'),
   focus = document.getElementById('focus'),
   backgroundButton = document.getElementById('background-btn'),
-  joke = document.getElementById('joke');
+  joke = document.getElementById('joke'),
+  weatherIcon = document.querySelector('.weather-icon'),
+  temperature = document.querySelector('.temperature'),
+  weatherDescription = document.querySelector('.weather-description'),
+  humidity = document.querySelector('.humidity'),
+  windSpeed = document.querySelector('.wind-speed'),
+  city = document.getElementById('city'),
+  errorText = document.getElementById('error');
 
 const weekdayNames = [
     'Sunday',
@@ -36,6 +43,34 @@ let bgList = [];
 let modifier = 0;
 // Options
 const showAmPm = false;
+
+// Get weather
+
+async function getWeather(city) {
+  if (!city || city === '[Enter city]') return;
+
+  try {
+    const response = await axios.get('https://api.openweathermap.org/data/2.5/weather?', {
+      params: {
+        q: city,
+        lang: 'en',
+        appid: '08f2a575dda978b9c539199e54df03b0',
+        units: 'metric'
+      }
+    });
+
+    console.log(response.data.main.humidity);
+    weatherIcon.classList.add(`owf-${response.data.weather[0].id}`);
+    temperature.textContent = `${response.data.main.temp}°C`;
+    weatherDescription.textContent = response.data.weather[0].description;
+    humidity.textContent = `Humidity: ${response.data.main.humidity}`;
+    windSpeed.textContent = `Wind speed: ${response.data.wind.speed}`;
+    errorText.innerText = '';
+  } catch (error) {
+    errorText.innerText = error;
+    console.error(error);
+  }
+}
 
 // Get dad joke
 
@@ -231,6 +266,31 @@ function setFocus(e) {
   }
 }
 
+// Get city
+
+function getCity() {
+  if (!localStorage.getItem('city')) {
+    city.textContent = '[Enter city]';
+  } else {
+    city.textContent = localStorage.getItem('city');
+  }
+}
+
+// Set city
+
+function setCity(e) {
+  if (!city.textContent) return;
+  if (e.type === 'keypress') {
+    //Make sure enter is pressed
+    if (e.which == 13 || e.keyCode == 13) {
+      localStorage.setItem('city', e.target.innerText);
+      city.blur();
+    }
+  } else {
+    localStorage.setItem('city', e.target.innerText);
+  }
+}
+
 // Clear field
 
 function clearField(field) {
@@ -258,6 +318,20 @@ function clearField(field) {
   });
 }
 
+// debounce
+
+const debounce = (func, delay = 1000) => {
+  let timeoutId;
+  return (...args) => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      func.apply(null, args);
+    }, delay);
+  };
+};
+
 name.addEventListener('focus', () => clearField(name));
 name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
@@ -265,7 +339,13 @@ name.addEventListener('blur', setName);
 focus.addEventListener('focus', () => clearField(focus));
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
+
 joke.addEventListener('click', () => dadJoke());
+
+city.addEventListener('focus', () => clearField(city));
+city.addEventListener('input', debounce(() => getWeather(city.textContent), 1000));
+city.addEventListener('keypress', setCity);
+city.addEventListener('blur', setCity);
 
 backgroundButton.addEventListener('click', changeBg);
 
@@ -276,5 +356,7 @@ showDate();
 setGreet();
 getName();
 getFocus();
+getCity();
 setBg();
 dadJoke();
+getWeather(city.textContent);
