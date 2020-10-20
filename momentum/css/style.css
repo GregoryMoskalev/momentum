@@ -240,10 +240,6 @@ h2 {
   display: block;
   height: 3rem;
   min-width: 3rem;
-  font-size: 1.5rem;
-}
-#contrast {
-  /* color: darkgray; */
 }
 .contrast-0 {
   background-color: rgba(0, 0, 0, .0);
@@ -254,6 +250,7 @@ h2 {
 .contrast-20 {
   background-color: rgba(0, 0, 0, .2);
 }
+
 .contrast-30 {
   background-color: rgba(0, 0, 0, .3);
 }

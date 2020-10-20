@@ -111,9 +111,12 @@ function showTime() {
     sec = today.getSeconds(),
     amPm;
 
-  //change bg every hour
+  //change background every hour
 
-  if (min == 0 && sec == 0) setBg();
+  if (min == 0 && sec == 0) {
+    modifier = 0;
+    setBg();
+  }
 
   if (showAmPm) {
     // Set AM or PM
