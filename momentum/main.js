@@ -5,8 +5,8 @@ const date = document.getElementById('date'),
   name = document.getElementById('name'),
   focus = document.getElementById('focus'),
   backgroundButton = document.getElementById('background-btn'),
-  joke = document.getElementById('joke'),
-  jokeBtn = document.getElementById('joke-btn'),
+  quote = document.getElementById('quote'),
+  quoteBtn = document.getElementById('quote-btn'),
   weatherIcon = document.querySelector('.weather-icon'),
   temperature = document.querySelector('.temperature'),
   weatherDescription = document.querySelector('.weather-description'),
@@ -75,14 +75,21 @@ async function getWeather(city) {
   }
 }
 
-// Get dad joke
+// Get quote
 
-async function dadJoke() {
+async function randomQuote() {
   try {
     const response = await axios.get('https://icanhazdadjoke.com/', {
       headers: { Accept: 'text/plain' }
     });
-    joke.innerText = response.data;
+
+    //no to big jokes!
+    if (response.data.length > 250) {
+      console.log('🚨 too long joke');
+      randomQuote();
+    } else {
+      quote.innerText = response.data;
+    }
   } catch (error) {
     console.error(error);
   }
@@ -355,7 +362,7 @@ focus.addEventListener('focus', () => clearField(focus));
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 
-jokeBtn.addEventListener('click', () => dadJoke());
+quoteBtn.addEventListener('click', () => randomQuote());
 
 city.addEventListener('focus', () => clearField(city));
 city.addEventListener('input', debounce(() => getWeather(city.textContent), 1000));
@@ -375,5 +382,5 @@ getName();
 getFocus();
 getCity();
 setBg();
-dadJoke();
+randomQuote();
 getWeather(city.textContent);

@@ -65,18 +65,18 @@ h2 {
   }
 }
 
-.joke-wrapper {
+.quote-wrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
   align-items: center;
   min-width: 320px;
   width: 45vw;
-  height: 40rem;
+  height: 25rem;
   margin-bottom: 2rem;
 }
 
 @media (max-width: 700px) {
-  .joke-wrapper {
+  .quote-wrapper {
     width: 100%;
     margin-bottom: 0;
   }
@@ -98,9 +98,11 @@ h2 {
     width: 100%;
     align-self: center;
     align-items: center;
+    margin-top: 0rem;
     margin-bottom: 0rem;
   }
 }
+
 .weather-main {
   display: flex;
   flex-direction: row;
@@ -113,45 +115,76 @@ h2 {
   padding: .5rem 1rem;
 }
 
+@media (max-width: 700px) {
+  .wrapper-contrast {
+    width: 100%;
+    position: static;
+  }
+}
 .wrapper-contrast label {
   margin-bottom: .3rem;
   font-size: 1.6rem;
 }
 
-#joke {
+#quote {
   width: 100%;
-  height: 80%;
+
   line-height: 150%;
   padding: 1rem 1rem;
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
-#joke-btn {
-  padding: .4rem 1rem;
+#quote-btn {
+  align-self: flex-end;
+  margin-top: .5rem;
+  margin-right: .5rem;
   font-size: 2rem;
   font-family: inherit;
   font-weight: 500;
+
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
 
   background-color: transparent;
   color: inherit;
   border: none;
 
   cursor: pointer;
+  outline: none;
+
+  transition: all .4s;
 }
 
-#joke-btn:hover {
-  background-color: rgba(0, 0, 0, .7);
+@media (max-width: 700px) {
+  #quote-btn {
+    align-self: center;
+  }
 }
 
-#joke-btn:active {
-  background-color: black;
+#quote-btn svg {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+  padding: 1rem;
+  fill: white;
 }
 
+#quote-btn svg:hover,
+#quote-btn svg:active {
+  fill: black;
+}
+
+#quote-btn:hover {
+  background-color: #ffe577;
+}
+#quote-btn:active {
+  background-color: #fd6051;
+}
 #time {
   font-size: 8rem;
   font-weight: 500;
 }
-
 #date {
   margin-bottom: 1rem;
   font-size: 3rem;
@@ -160,15 +193,31 @@ h2 {
 #greeting {
   width: 50%;
 }
-
 #name,
-#focus {
+#focus,
+#city {
   display: inline-block;
   min-width: 100px;
-
+  padding: .2rem .4rem;
   cursor: pointer;
+  transition: all .4s;
+  outline-color: #ffe577;
 }
-
+#name:hover,
+#focus:hover,
+#city:hover {
+  background-color: rgba(0, 0, 0, .9);
+}
+#name:active,
+#focus:active,
+#city:active {
+  background-color: #ffe577;
+}
+#name:focus,
+#focus:focus,
+#city:focus {
+  background-color: black;
+}
 #background-btn {
   padding: .4rem 1rem;
   margin-top: 1rem;
@@ -176,19 +225,15 @@ h2 {
   font-size: 2rem;
   font-family: inherit;
   font-weight: 500;
-
   background-color: transparent;
   color: inherit;
   border: none;
-
   cursor: pointer;
   transition: background-color .3s, background-image 1s;
 }
-
 #background-btn:hover {
   background-color: rgba(0, 0, 0, .7);
 }
-
 #background-btn:disabled {
   background-image: linear-gradient(
     to right,
@@ -250,7 +295,6 @@ h2 {
 .contrast-20 {
   background-color: rgba(0, 0, 0, .2);
 }
-
 .contrast-30 {
   background-color: rgba(0, 0, 0, .3);
 }
