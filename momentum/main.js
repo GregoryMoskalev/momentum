@@ -17,8 +17,6 @@ const date = document.getElementById('date'),
   contrast = document.getElementById('contrast'),
   wrappers = document.querySelectorAll('.wrapper');
 
-console.log(contrast);
-
 const weekdayNames = [
     'Sunday',
     'Monday',
@@ -165,30 +163,20 @@ function setGreet() {
 
   if (hour < 6) {
     //Night
-    // document.body.style.backgroundImage = `url(./assets/images/night/${bgList[
-    //   bgNumber(hour, modifier)
-    // ]}.jpg)`;
+
     greeting.textContent = 'Good Night,';
-    // document.body.style.color = 'white';
   } else if (hour < 12) {
     //Morning
-    // document.body.style.backgroundImage = `url(./assets/images/morning/${bgList[
-    //   bgNumber(hour, modifier)
-    // ]}.jpg)`;
+
     greeting.textContent = 'Good Morning,';
   } else if (hour < 18) {
     //Afternoon
-    // document.body.style.backgroundImage = `url(./assets/images/day/${bgList[
-    //   bgNumber(hour, modifier)
-    // ]}.jpg)`;
+
     greeting.textContent = 'Good Afternoon,';
   } else if (hour < 24) {
     // Evening
-    // document.body.style.backgroundImage = `url(./assets/images/evening/${bgList[
-    //   bgNumber(hour, modifier)
-    // ]}.jpg)`;
+
     greeting.textContent = 'Good Evening,';
-    // document.body.style.color = 'white';
   }
 }
 
@@ -331,7 +319,6 @@ function clearField(field) {
 //change contrast
 
 function changeContrast() {
-  console.log(wrappers[0].className, wrappers, 'contrast', contrast.value);
   wrappers.forEach((elem) => {
     elem.className = `${elem.className.replace(
       / contrast-\d{1,3}/g,
@@ -370,7 +357,7 @@ city.addEventListener('keypress', setCity);
 city.addEventListener('blur', setCity);
 
 contrast.addEventListener('click', changeContrast);
-
+contrast.addEventListener('touchmove', changeContrast);
 backgroundButton.addEventListener('click', changeBg);
 
 //Run
