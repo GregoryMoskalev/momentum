@@ -17,6 +17,8 @@ const date = document.getElementById('date'),
   contrast = document.getElementById('contrast'),
   wrappers = document.querySelectorAll('.wrapper');
 
+console.log(contrast);
+
 const weekdayNames = [
     'Sunday',
     'Monday',
@@ -360,7 +362,7 @@ city.addEventListener('input', debounce(() => getWeather(city.textContent), 1000
 city.addEventListener('keypress', setCity);
 city.addEventListener('blur', setCity);
 
-contrast.addEventListener('mouseup', changeContrast);
+contrast.addEventListener('click', changeContrast);
 
 backgroundButton.addEventListener('click', changeBg);
 
