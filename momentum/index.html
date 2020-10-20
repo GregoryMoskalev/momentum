@@ -10,7 +10,11 @@
   <title>Welcome</title>
 </head>
 <body>
-  <input type="range" id="contrast" min="0" max="100" step="10" value="50">
+  <div class="wrapper wrapper-contrast contrast-50">
+    <label for="contrast">Change contrast</label>
+    <input name="contrast" type="range" id="contrast" min="0" max="100" step="10" value="50">
+  </div>
+
   <div class="wrapper weather-wrapper contrast-50">
     <div class="weather-main">
       <i class="weather-icon owf"></i>

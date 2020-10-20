@@ -107,6 +107,17 @@ h2 {
   align-items: center;
 }
 
+.wrapper-contrast {
+  position: absolute;
+  top: 0;
+  padding: .5rem 1rem;
+}
+
+.wrapper-contrast label {
+  margin-bottom: .3rem;
+  font-size: 1.6rem;
+}
+
 #joke {
   width: 100%;
   height: 80%;
@@ -232,9 +243,7 @@ h2 {
   font-size: 1.5rem;
 }
 #contrast {
-  margin-top: 1rem;
-  position: absolute;
-  top: 0;
+  /* color: darkgray; */
 }
 .contrast-0 {
   background-color: rgba(0, 0, 0, .0);
