@@ -10,7 +10,19 @@
   <title>Welcome</title>
 </head>
 <body>
-  <div id="wrapper" class="wrapper">
+  <input type="range" id="contrast" min="0" max="100" step="10" value="50">
+  <div class="wrapper weather-wrapper contrast-50">
+    <div class="weather-main">
+      <i class="weather-icon owf"></i>
+      <div class="temperature"></div>
+    </div>
+    <span id="city" contenteditable="true" autocomplete="on"></span>
+    <div class="weather-params weather-description error"></div>
+
+    <div class="weather-params humidity"></div>
+    <div class="weather-params wind-speed"></div>
+  </div>
+  <div id="wrapper" class="wrapper main-wrapper contrast-50">
     <time id="time"></time>
     <time id="date"></time>
     <h1>
@@ -27,21 +39,13 @@
     <button id="background-btn">Next background</button>
     
   </div>
-  <div class="wrapper joke-wrapper">
+
+  <div class="wrapper joke-wrapper contrast-50">
+    <button id="joke-btn">Random dad joke</button>
     <h3 id="joke">
 
     </h3>
   </div>
-
-  <div class="wrapper weather-wrapper">
-    <i class="weather-icon owf"></i>
-    <div class="weather-description"></div>
-    <div class="temperature"></div>
-    <div class="humidity"></div>
-    <div class="wind-speed"></div>
-    <span id="city" contenteditable="true"></span>
-  </div>
-  <span id='error'></span>  
   <script src="main.js"></script>
 </body>
 </html>

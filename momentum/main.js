@@ -6,13 +6,16 @@ const date = document.getElementById('date'),
   focus = document.getElementById('focus'),
   backgroundButton = document.getElementById('background-btn'),
   joke = document.getElementById('joke'),
+  jokeBtn = document.getElementById('joke-btn'),
   weatherIcon = document.querySelector('.weather-icon'),
   temperature = document.querySelector('.temperature'),
   weatherDescription = document.querySelector('.weather-description'),
   humidity = document.querySelector('.humidity'),
   windSpeed = document.querySelector('.wind-speed'),
   city = document.getElementById('city'),
-  errorText = document.getElementById('error');
+  errorText = document.querySelector('.error'),
+  contrast = document.getElementById('contrast'),
+  wrappers = document.querySelectorAll('.wrapper');
 
 const weekdayNames = [
     'Sunday',
@@ -59,13 +62,11 @@ async function getWeather(city) {
       }
     });
 
-    console.log(response.data.main.humidity);
     weatherIcon.classList.add(`owf-${response.data.weather[0].id}`);
     temperature.textContent = `${response.data.main.temp}°C`;
     weatherDescription.textContent = response.data.weather[0].description;
     humidity.textContent = `Humidity: ${response.data.main.humidity}`;
     windSpeed.textContent = `Wind speed: ${response.data.wind.speed}`;
-    errorText.innerText = '';
   } catch (error) {
     errorText.innerText = error;
     console.error(error);
@@ -185,13 +186,6 @@ function setBg() {
     hour = today.getHours();
 
   let bg = bgNumber(hour, modifier);
-
-  console.log('Background number from array 0-6 morning 6-12 day 12-18 evening 18-23 night:');
-  console.log(bg);
-  console.log('image name');
-  console.log(`${bgList[bg]}.jpg`);
-  console.log('List of random backgrounds:');
-  console.log(bgList);
 
   if (bg < 6) {
     //Night
@@ -322,6 +316,18 @@ function clearField(field) {
   });
 }
 
+//change contrast
+
+function changeContrast() {
+  console.log(wrappers[0].className, wrappers, 'contrast', contrast.value);
+  wrappers.forEach((elem) => {
+    elem.className = `${elem.className.replace(
+      / contrast-\d{1,3}/g,
+      ''
+    )} contrast-${contrast.value}`;
+  });
+}
+
 // debounce
 
 const debounce = (func, delay = 1000) => {
@@ -344,12 +350,14 @@ focus.addEventListener('focus', () => clearField(focus));
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 
-joke.addEventListener('click', () => dadJoke());
+jokeBtn.addEventListener('click', () => dadJoke());
 
 city.addEventListener('focus', () => clearField(city));
 city.addEventListener('input', debounce(() => getWeather(city.textContent), 1000));
 city.addEventListener('keypress', setCity);
 city.addEventListener('blur', setCity);
+
+contrast.addEventListener('mouseup', changeContrast);
 
 backgroundButton.addEventListener('click', changeBg);
 
