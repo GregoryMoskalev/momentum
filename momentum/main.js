@@ -356,8 +356,8 @@ city.addEventListener('input', debounce(() => getWeather(city.textContent), 1000
 city.addEventListener('keypress', setCity);
 city.addEventListener('blur', setCity);
 
-contrast.addEventListener('click', changeContrast);
-contrast.addEventListener('touchmove', changeContrast);
+contrast.addEventListener('change', changeContrast);
+
 backgroundButton.addEventListener('click', changeBg);
 
 //Run
