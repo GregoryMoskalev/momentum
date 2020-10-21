@@ -25,6 +25,12 @@ body {
   transition: all 1s ease-in-out;
 }
 
+@media (max-width: 700px) {
+  body {
+    justify-content: center;
+  }
+}
+
 .toning-wrapper {
   position: absolute;
   top: 0;
@@ -40,11 +46,12 @@ body {
   text-align: center;
 }
 
-@media (max-width: 700px) {
-  body {
+/* ???? */
+/* @media (max-width: 700px) {
+  .toning-wrapper {
     justify-content: center;
   }
-}
+} */
 
 h1 {
   display: block;
@@ -60,13 +67,12 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
 }
 
 .main-wrapper {
   min-width: 320px;
-  width: 45vw;
+  width: 50rem;
   padding: 0 1.4rem;
 }
 
@@ -81,7 +87,7 @@ h2 {
   justify-content: start;
   align-items: center;
   min-width: 320px;
-  width: 45vw;
+  width: 50rem;
   height: 25rem;
   margin-bottom: 2rem;
 }
