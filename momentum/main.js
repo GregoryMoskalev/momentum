@@ -189,29 +189,28 @@ function setBg() {
 
   if (bg < 6) {
     //Night
-    document.body.style.backgroundImage = `url(./assets/images/overlay.png), url(./assets/images/night/${bgList[
-      bg
-    ]}.jpg)`;
-
-    document.body.style.color = 'white';
+    viewBgImage(`./assets/images/night/${bgList[bg]}.jpg`);
   } else if (bg < 12) {
     //Morning
-    document.body.style.backgroundImage = `url(./assets/images/overlay.png), url(./assets/images/morning/${bgList[
-      bg
-    ]}.jpg)`;
+    viewBgImage(`./assets/images/morning/${bgList[bg]}.jpg`);
   } else if (bg < 18) {
     //Afternoon
-    document.body.style.backgroundImage = `url(./assets/images/overlay.png), url(./assets/images/day/${bgList[
-      bg
-    ]}.jpg)`;
+    viewBgImage(`./assets/images/day/${bgList[bg]}.jpg`);
   } else if (bg < 24) {
     //Evening
-    document.body.style.backgroundImage = `url(./assets/images/overlay.png), url(./assets/images/evening/${bgList[
-      bg
-    ]}.jpg)`;
-
-    document.body.style.color = 'white';
+    viewBgImage(`./assets/images/evening/${bgList[bg]}.jpg`);
   }
+}
+
+//load bg
+
+function viewBgImage(data) {
+  const src = data;
+  const img = document.createElement('img');
+  img.src = src;
+  img.onload = () => {
+    document.body.style.backgroundImage = `url(./assets/images/overlay.png), url(${src})`;
+  };
 }
 
 // Change background
