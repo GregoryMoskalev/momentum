@@ -19,14 +19,25 @@ body {
   background-size: cover;
   background-position: center center;
   font-family: 'Quicksand', sans-serif;
+
+  height: 100vh;
+  color: white;
+  transition: background-image 1s ease-in-out;
+}
+
+.toning-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  height: 100vh;
-  color: white;
-  transition: background-image 1s ease-in-out;
 }
 
 @media (max-width: 700px) {

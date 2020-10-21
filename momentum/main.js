@@ -15,7 +15,7 @@ const date = document.getElementById('date'),
   city = document.getElementById('city'),
   errorText = document.querySelector('.error'),
   contrast = document.getElementById('contrast'),
-  wrappers = document.querySelectorAll('.wrapper');
+  wrappers = document.querySelectorAll('.toning-wrapper');
 
 const weekdayNames = [
     'Sunday',
@@ -189,18 +189,26 @@ function setBg() {
 
   if (bg < 6) {
     //Night
-    document.body.style.backgroundImage = `url(./assets/images/night/${bgList[bg]}.jpg)`;
+    document.body.style.backgroundImage = `url(./assets/images/overlay.png), url(./assets/images/night/${bgList[
+      bg
+    ]}.jpg)`;
 
     document.body.style.color = 'white';
   } else if (bg < 12) {
     //Morning
-    document.body.style.backgroundImage = `url(./assets/images/morning/${bgList[bg]}.jpg)`;
+    document.body.style.backgroundImage = `url(./assets/images/overlay.png), url(./assets/images/morning/${bgList[
+      bg
+    ]}.jpg)`;
   } else if (bg < 18) {
     //Afternoon
-    document.body.style.backgroundImage = `url(./assets/images/day/${bgList[bg]}.jpg)`;
+    document.body.style.backgroundImage = `url(./assets/images/overlay.png), url(./assets/images/day/${bgList[
+      bg
+    ]}.jpg)`;
   } else if (bg < 24) {
     //Evening
-    document.body.style.backgroundImage = `url(./assets/images/evening/${bgList[bg]}.jpg)`;
+    document.body.style.backgroundImage = `url(./assets/images/overlay.png), url(./assets/images/evening/${bgList[
+      bg
+    ]}.jpg)`;
 
     document.body.style.color = 'white';
   }
